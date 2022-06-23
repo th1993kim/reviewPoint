@@ -1,4 +1,4 @@
-package com.kth.review.point.domain;
+package com.kth.review.pointhistory.domain;
 
 import java.time.LocalDateTime;
 

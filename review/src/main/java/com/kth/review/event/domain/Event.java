@@ -48,6 +48,7 @@ public class Event {
 	private String attachedPhotoIds;
 	private String userId;
 	private String placeId;
+	private Boolean isFirst;
 	
 	@CreatedDate
 	private LocalDateTime regDtm;

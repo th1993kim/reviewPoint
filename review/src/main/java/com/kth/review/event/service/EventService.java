@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.kth.review.event.domain.Event;
 import com.kth.review.event.dto.EventRequestDTO;
+import com.kth.review.event.enumeration.Action;
 import com.kth.review.event.exception.EventNotFoundException;
 import com.kth.review.event.exception.EventOverLapException;
 import com.kth.review.event.repository.EventRepository;
-import com.kth.review.point.service.PointHistoryService;
+import com.kth.review.pointhistory.service.PointHistoryService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,12 +20,12 @@ import lombok.RequiredArgsConstructor;
 public class EventService {
 
 	private final EventRepository eventRepository;
-	private final PointHistoryService pointHistoryService;
 	
 	public Long insert(EventRequestDTO eventRequestDTO) throws Exception {
 		Long point = 0L;
-		Event event = eventRepository.findOneByUserIdAndPlaceId(eventRequestDTO.getUserId(),eventRequestDTO.getPlaceId()).orElse(null);
-		List<Event> eventList = eventRepository.findAllByPlaceIdOrderByRegDtmAsc(eventRequestDTO.getPlaceId());
+		Boolean isFirst = false;
+		Event event = eventRepository.findByUserIdAndPlaceIdAndActionNot(eventRequestDTO.getUserId(),eventRequestDTO.getPlaceId(),Action.DELETE.name()).orElse(null);
+		List<Event> eventList = eventRepository.findAllByPlaceIdAndActionNotOrderByRegDtmAsc(eventRequestDTO.getPlaceId(),Action.DELETE.name());
 		
 		if(event == null) {
 			/*
@@ -35,8 +36,10 @@ public class EventService {
 			 */
 			if( eventRequestDTO.getContent().length()>0) point++;
 			if( eventRequestDTO.getAttachedPhotoIds().length>0) point++;
-			if( eventList.size()<1) point++;
-			
+			if( eventList.size()<1) {
+				point++;
+				isFirst = true;
+			}
 			event = Event.builder()
 						 .type(eventRequestDTO.getType())
 						 .action(eventRequestDTO.getAction())
@@ -45,9 +48,9 @@ public class EventService {
 						 .attachedPhotoIds(String.join(",",eventRequestDTO.getAttachedPhotoIds()))
 						 .userId(eventRequestDTO.getUserId())
 						 .placeId(eventRequestDTO.getPlaceId())
+						 .isFirst(isFirst)
 						 .build();
 			
-			if(point != 0L) pointHistoryService.insert(eventRequestDTO.getUserId(),point);
 		}else throw new EventOverLapException();
 		
 		return point;
@@ -55,25 +58,20 @@ public class EventService {
 
 	public Long update(EventRequestDTO eventRequestDTO) throws Exception {
 		
-		Event event = eventRepository.findOneByReviewId(eventRequestDTO.getReviewId()).orElseThrow(() -> new EventNotFoundException());
+		Event event = eventRepository.findByReviewId(eventRequestDTO.getReviewId()).orElseThrow(() -> new EventNotFoundException());
 		Long point = 0L;
 		String[] eventAttachedPhotoIds = event.getAttachedPhotoIds().split(",");
 		
-		if( event.getContent().length()>0) {
-			point++;
+		if( event.getContent().length()>0) 
 			if( eventRequestDTO.getContent().length()<1) point--;
-		}else 
+		else 
 			if( eventRequestDTO.getContent().length()>0) point++;
 		
 		
-		if( eventAttachedPhotoIds.length >0) {
-			point++;
+		if( eventAttachedPhotoIds.length >0) 
 			if( eventRequestDTO.getAttachedPhotoIds().length<1 ) point--;
-		}else 
+		else 
 			if( eventRequestDTO.getAttachedPhotoIds().length>0 ) point++;
-		
-		
-		if(point != 0L) pointHistoryService.insert(eventRequestDTO.getUserId(),point);
 		
 		event.setAction(eventRequestDTO.getAction());
 		event.setContent(eventRequestDTO.getContent());
@@ -85,15 +83,12 @@ public class EventService {
 	public Long delete(EventRequestDTO eventRequestDTO) throws Exception{
 		
 		Long point = 0L;
-		Event event = eventRepository.findOneByReviewId(eventRequestDTO.getReviewId()).orElseThrow(() -> new EventNotFoundException());
-		List<Event> eventList= eventRepository.findAllByPlaceIdOrderByRegDtmAsc(eventRequestDTO.getPlaceId());
+		Event event = eventRepository.findByReviewId(eventRequestDTO.getReviewId()).orElseThrow(() -> new EventNotFoundException());
 		String[] eventAttachedPhotoIds = event.getAttachedPhotoIds().split(",");
 		
-		if( event.equals(eventList.get(0)) ) point --;
+		if( event.getIsFirst() ) 			  point --;
 		if( event.getContent().length()  >0 ) point --;	
 		if( eventAttachedPhotoIds.length >0 ) point --;
-		
-		if(point != 0L) pointHistoryService.insert(eventRequestDTO.getUserId(),point);
 		
 		event.setAction(eventRequestDTO.getAction());
 		eventRepository.save(event);
