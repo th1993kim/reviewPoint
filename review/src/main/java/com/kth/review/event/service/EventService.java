@@ -1,7 +1,6 @@
 package com.kth.review.event.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -11,21 +10,23 @@ import com.kth.review.event.enumeration.Action;
 import com.kth.review.event.exception.EventNotFoundException;
 import com.kth.review.event.exception.EventOverLapException;
 import com.kth.review.event.repository.EventRepository;
-import com.kth.review.pointhistory.service.PointHistoryService;
+import com.kth.review.user.domain.User;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class EventService {
 
 	private final EventRepository eventRepository;
 	
-	public Long insert(EventRequestDTO eventRequestDTO) throws Exception {
+	public Long insert(User user, EventRequestDTO eventRequestDTO) throws Exception {
 		Long point = 0L;
 		Boolean isFirst = false;
-		Event event = eventRepository.findByUserIdAndPlaceIdAndActionNot(eventRequestDTO.getUserId(),eventRequestDTO.getPlaceId(),Action.DELETE.name()).orElse(null);
-		List<Event> eventList = eventRepository.findAllByPlaceIdAndActionNotOrderByRegDtmAsc(eventRequestDTO.getPlaceId(),Action.DELETE.name());
+		Event event = eventRepository.findByUserAndPlaceIdAndActionNot(user,eventRequestDTO.getPlaceId(),Action.DELETE).orElse(null);
+		Long count = eventRepository.countByPlaceIdAndActionNot(eventRequestDTO.getPlaceId(),Action.DELETE);
 		
 		if(event == null) {
 			/*
@@ -36,7 +37,7 @@ public class EventService {
 			 */
 			if( eventRequestDTO.getContent().length()>0) point++;
 			if( eventRequestDTO.getAttachedPhotoIds().length>0) point++;
-			if( eventList.size()<1) {
+			if( count < 1) {
 				point++;
 				isFirst = true;
 			}
@@ -46,11 +47,11 @@ public class EventService {
 						 .reviewId(eventRequestDTO.getReviewId())
 						 .content(eventRequestDTO.getContent())
 						 .attachedPhotoIds(String.join(",",eventRequestDTO.getAttachedPhotoIds()))
-						 .userId(eventRequestDTO.getUserId())
+						 .user(user)
 						 .placeId(eventRequestDTO.getPlaceId())
 						 .isFirst(isFirst)
 						 .build();
-			
+			eventRepository.save(event);
 		}else throw new EventOverLapException();
 		
 		return point;
@@ -58,20 +59,23 @@ public class EventService {
 
 	public Long update(EventRequestDTO eventRequestDTO) throws Exception {
 		
-		Event event = eventRepository.findByReviewId(eventRequestDTO.getReviewId()).orElseThrow(() -> new EventNotFoundException());
+		Event event = eventRepository.findByReviewIdAndActionNot(eventRequestDTO.getReviewId(),Action.DELETE).orElseThrow(() -> new EventNotFoundException());
 		Long point = 0L;
 		String[] eventAttachedPhotoIds = event.getAttachedPhotoIds().split(",");
 		
-		if( event.getContent().length()>0) 
+		//수정전 글 내용 비교
+		if( event.getContent().length()>0) {
 			if( eventRequestDTO.getContent().length()<1) point--;
-		else 
+		}else{ 
 			if( eventRequestDTO.getContent().length()>0) point++;
+		}
 		
-		
-		if( eventAttachedPhotoIds.length >0) 
+		//수정전 글과 사진 수량 비교
+		if( eventAttachedPhotoIds.length >0) { 
 			if( eventRequestDTO.getAttachedPhotoIds().length<1 ) point--;
-		else 
+		}else { 
 			if( eventRequestDTO.getAttachedPhotoIds().length>0 ) point++;
+		}
 		
 		event.setAction(eventRequestDTO.getAction());
 		event.setContent(eventRequestDTO.getContent());
@@ -83,7 +87,7 @@ public class EventService {
 	public Long delete(EventRequestDTO eventRequestDTO) throws Exception{
 		
 		Long point = 0L;
-		Event event = eventRepository.findByReviewId(eventRequestDTO.getReviewId()).orElseThrow(() -> new EventNotFoundException());
+		Event event = eventRepository.findByReviewIdAndActionNot(eventRequestDTO.getReviewId(),Action.DELETE).orElseThrow(() -> new EventNotFoundException());
 		String[] eventAttachedPhotoIds = event.getAttachedPhotoIds().split(",");
 		
 		if( event.getIsFirst() ) 			  point --;
@@ -92,6 +96,7 @@ public class EventService {
 		
 		event.setAction(eventRequestDTO.getAction());
 		eventRepository.save(event);
+		
 		return point;
 	}
 	

@@ -34,7 +34,7 @@ public class EventController {
 		
 		// 2. Action별로 로직 및 Point제도 다르게 해서 가져오기
 		switch(eventRequestDTO.getAction()){
-			case ADD 	: point = eventService.insert(eventRequestDTO); httpStatus = HttpStatus.CREATED; break;
+			case ADD 	: point = eventService.insert(user,eventRequestDTO); httpStatus = HttpStatus.CREATED; break;
 			case MOD 	: point = eventService.update(eventRequestDTO); break;
 			case DELETE : point = eventService.delete(eventRequestDTO); break;
 			default 	: break;

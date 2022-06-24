@@ -1,7 +1,5 @@
 package com.kth.review.pointhistory.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +22,7 @@ public class PointHistoryService {
 	public void insert(User user, Long point) throws UserNotFoundException {
 		
 		PointHistory pointHistory = PointHistory.builder()
-												.userId(user.getUserId())
+												.user(user)
 												.point(point)
 												.build();
 		
@@ -32,10 +30,6 @@ public class PointHistoryService {
 		pointHistoryRepository.save(pointHistory);
 	}
 
-	public List<PointHistory> findAllByUserId(String userId) { 
-		return pointHistoryRepository.findAllByUserId(userId); 
-	}
-	
 
 
 }
