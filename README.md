@@ -121,9 +121,16 @@
   * URL : __GET &nbsp;```http://localhost/users/{userId}/points```__
   * Function : 포인트 및 목록 조회 
   * __Return__ : &nbsp;  
-    {
-      
-    }
+{&nbsp;  
+  &nbsp;&nbsp;"userId":"kth", &nbsp;  
+  &nbsp;&nbsp;"point":10,&nbsp;  
+  &nbsp;&nbsp;"pointHistoryList":[&nbsp;  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {"point":2,"regDtm":"2022-06-25T18:24:43"},&nbsp;  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {"point":1,"regDtm":"2022-06-25T18:24:43"}&nbsp;  
+  &nbsp;&nbsp;  ]&nbsp;  
+}
 
 &nbsp;  
 &nbsp;  
@@ -131,18 +138,20 @@
   * URL : __POST &nbsp;```http://localhost/events```__
   * Function : 리뷰 이벤트 등록 / 수정 / 삭제
   * Body : JSON DATA &nbsp;  
-       {&nbsp;  
-       &nbsp;&nbsp;"title" : "테스트 제목" , &nbsp;  
-       &nbsp;&nbsp;"content" : "테스트 내용"&nbsp;  
-        }
-  * __Return__ : &nbsp;  
-   {
-   "type": "REVIEW",
-   "action": "ADD", /* "MOD", "DELETE" */
-   "reviewId": "240a0658-dc5f-4878-9381-ebb7b2667772",
-   "content": "좋아요!",
-   "attachedPhotoIds": ["e4d1a64e-a531-46de-88d0-ff0ed70c0bb8", "afb0cef2-851d-4a50-bb07-9cc15cbdc332"],
-   "userId": "3ede0ef2-92b7-4817-a5f3-0c575361f745",
-   "placeId": "2e4baf1c-5acb-4efb-a1af-eddada31b00f"
+   {&nbsp;  
+   &nbsp;&nbsp;"type": "REVIEW", &nbsp;  
+   &nbsp;&nbsp;"action": "ADD", /* "MOD", "DELETE" */&nbsp;  
+   &nbsp;&nbsp;"reviewId": "240a0658-dc5f-4878-9381-ebb7b2667772", &nbsp;  
+   &nbsp;&nbsp;"content": "좋아요!", &nbsp;  
+   &nbsp;&nbsp;"attachedPhotoIds":  ["e4d1a64e-a531-46de-88d0-ff0ed70c0bb8", "afb0cef2-
+851d-4a50-bb07-9cc15cbdc332"], &nbsp;  
+   &nbsp;&nbsp;"userId": "3ede0ef2-92b7-4817-a5f3-0c575361f745",
+ &nbsp;  
+   &nbsp;&nbsp;"placeId": "2e4baf1c-5acb-4efb-a1af-eddada31b00f"
+ &nbsp;  
    }
-
+  * __Return__ : &nbsp;  
+    {&nbsp;  
+    &nbsp;&nbsp;"status" : "추가" , &nbsp;  
+    &nbsp;&nbsp;"point" : 2 &nbsp;  
+    }
