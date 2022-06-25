@@ -48,11 +48,10 @@ public class PointHistoryControllerIntegreTest {
 	
 	@BeforeEach
 	void beforeEach() {
-		em.createNativeQuery("ALTER TABLE user AUTO_INCREMENT 1").executeUpdate();
 		em.createNativeQuery("ALTER TABLE point_history AUTO_INCREMENT 1").executeUpdate();
 		
 		User user = User.builder()
-						.userId("kth")
+						.userId("kthh")
 						.point(10L)
 						.build();
 		userRepository.save(user);
@@ -77,12 +76,12 @@ public class PointHistoryControllerIntegreTest {
 	void getPointsOnUser() throws Exception{
 		
 		//when
-		ResultActions resultAction = mockMvc.perform(get("/users/kth/points")
+		ResultActions resultAction = mockMvc.perform(get("/users/kthh/points")
 													.accept(MediaType.APPLICATION_JSON));
 		
 		//then
 		resultAction.andExpect(status().isOk())
-					.andExpect(jsonPath("$.userId").value("kth"))
+					.andExpect(jsonPath("$.userId").value("kthh"))
 					.andDo(MockMvcResultHandlers.print());
 	}
 }

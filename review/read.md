@@ -3,7 +3,7 @@
 
 ## 과제 구상도
 &nbsp;  
-![image](https://user-images.githubusercontent.com/81105748/174888048-895f5580-678f-45c7-9866-0e5ef8debb58.png)
+![image](https://user-images.githubusercontent.com/81105748/175780265-8da7761c-3e2e-4d3a-bd09-ff8e3f49087f.png)
 
 &nbsp;  
 ### :computer: __사용 프레임워크 및 라이브러리__
@@ -29,9 +29,6 @@
 * __Open JDK 11 설치__
   * 설치 URL : https://jdk.java.net/archive/ 에서 __11.0.2__ 버전 설치
   * 압축 해제 : __C:\Program Files\Java__ 와 같은 경로에 해제 하는걸 권합니다.
-  * username : __dbAdmin__
-  * password : __1234__
-  *  __*자세한 설정은 프로젝트 내의 application.yml를 변경 하시면 됩니다.__
 
 &nbsp;
 * __STS(Eclipse) 설치__
@@ -63,7 +60,7 @@
 * DB 테이블 : event(리뷰이벤트)&nbsp; | &nbsp;PointHistory(포인트기록)  &nbsp; | &nbsp; User(사용자)
 * DB Mapper : JPA , JPQL 이용
 * 데이터 송수신 : JSON Data
-* 에러 : Json Data {code : 400 , mssage: "잘못된 요청입니다." }
+* 에러 : Json Data {code : 400 , mssage: "잘못된 요청입니다." } 처리
 &nbsp;  
 &nbsp;  
 ### :runner: 실행
@@ -79,13 +76,19 @@
       * grant all privileges on *.* to 'dbAdmin' with grant option; 
       * FLUSH PRIVILEGES
    2. 프로젝트 내의 __sql폴더 Sql 파일__ 실행 혹은 Import (스키마 까지 생성됨)
+3. __Jar파일 빌드__ :  &nbsp; 
+  * 프로젝트 디렉토리에서 gradlew bootjar&nbsp;        
+![image](https://user-images.githubusercontent.com/81105748/175780075-46465d95-7489-47e7-a2be-d47873c1bc4a.png)
 
+  * 아래와 같은 화면이 나오면 빌드 성공! &nbsp;     
+![image](https://user-images.githubusercontent.com/81105748/175779665-08f04a67-9d5a-4919-b077-784f6e52b717.png)
+
+4. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
+  * java -jar 디렉토리/파일명.jar &nbsp;  
+<img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
  
-3. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
-  * java -jar 디렉토리/파일명.jar
- <img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
-  * 아래와 같은 화면이 나오면 성공!
-  <img width="1116" alt="image" src="https://user-images.githubusercontent.com/81105748/175766703-bd08f910-d33d-46b7-ab93-1897c1095e6e.png">
+  * 아래와 같은 화면이 나오면 성공! &nbsp;  
+<img width="1116" alt="image" src="https://user-images.githubusercontent.com/81105748/175766703-bd08f910-d33d-46b7-ab93-1897c1095e6e.png">
 
 &nbsp;  
 &nbsp;  
@@ -103,7 +106,7 @@
  &nbsp;
 ### * __POSTMAN 검증 예시__ *
 &nbsp; 
-![image](https://user-images.githubusercontent.com/81105748/174868510-e55052c0-0714-411c-8275-993bb0425fd9.png)
+![image](https://user-images.githubusercontent.com/81105748/175780583-b4ea12b2-7871-43a9-a3e1-856264f464cc.png)
 &nbsp;
 &nbsp;
 &nbsp;  
@@ -112,7 +115,14 @@
 
 * __테스트 코드 검증__ : &nbsp;  
   src/test/java 패키지에서 com.callbus.zaritalk.board 패키지 내의 Controller , Service , Repository Class __우클릭 후 Run As -> Junit5 Test 가동__
-
+ &nbsp;
+### * Junit5 검증 예시__ *
+&nbsp; 
+![image](https://user-images.githubusercontent.com/81105748/175780494-bb542742-1738-4fee-a00e-b6cf20dc4d55.png)
+&nbsp;
+&nbsp;
+&nbsp;  
+&nbsp;  
 
 &nbsp;  
 &nbsp;  

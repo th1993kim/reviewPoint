@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `review` /*!40100 DEFAULT CHARACTER SET utf8 COLL
 USE `review`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: review
+-- Host: localhost    Database: review
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -39,7 +39,7 @@ CREATE TABLE `event` (
   PRIMARY KEY (`event_id`),
   KEY `review_index` (`review_id`),
   KEY `user_place_index` (`user_ai_id`,`place_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='리뷰이벤트';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='리뷰이벤트';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `point_history` (
   `reg_dtm` datetime DEFAULT NULL COMMENT '등록일',
   PRIMARY KEY (`point_history_id`),
   KEY `user_index` (`user_ai_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='포인트기록';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='포인트기록';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `user` (
   `upd_dtm` datetime DEFAULT NULL COMMENT '수정일',
   PRIMARY KEY (`user_ai_id`),
   KEY `user_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='유저테이블';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='유저테이블';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +101,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (2,'kth',10,'2022-06-26 00:33:08','2022-06-26 00:33:08');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -113,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-25 17:01:10
+-- Dump completed on 2022-06-26  0:40:54

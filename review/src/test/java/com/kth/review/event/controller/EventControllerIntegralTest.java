@@ -43,9 +43,8 @@ public class EventControllerIntegralTest {
 	
 	@BeforeEach
 	void beforEach() {
-		em.createNativeQuery("ALTER TABLE user AUTO_INCREMENT 1").executeUpdate();
 		User user = User.builder()
-					.userId("kth")
+					.userId("kthh")
 					.point(10L)
 					.build();
 		userRepository.save(user);
