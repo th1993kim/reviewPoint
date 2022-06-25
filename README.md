@@ -3,7 +3,7 @@
 
 ## 과제 구상도
 &nbsp;  
-![image](https://user-images.githubusercontent.com/81105748/174888048-895f5580-678f-45c7-9866-0e5ef8debb58.png)
+![image](https://user-images.githubusercontent.com/81105748/175780265-8da7761c-3e2e-4d3a-bd09-ff8e3f49087f.png)
 
 &nbsp;  
 ### :computer: __사용 프레임워크 및 라이브러리__
