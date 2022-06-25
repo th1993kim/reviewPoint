@@ -112,6 +112,10 @@
 
 * __테스트 코드 검증__ : &nbsp;  
   src/test/java 패키지에서 com.callbus.zaritalk.board 패키지 내의 Controller , Service , Repository Class __우클릭 후 Run As -> Junit5 Test 가동__
+  
+ &nbsp;
+### * __Junit5 검증__ *
+![image](https://user-images.githubusercontent.com/81105748/175768529-19df4d72-9e7d-45f3-80e9-4d2b29b53973.png)
 
 
 &nbsp;  
