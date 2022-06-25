@@ -77,12 +77,12 @@
       * FLUSH PRIVILEGES
    2. 프로젝트 내의 __sql폴더 Sql 파일__ 실행 혹은 Import (스키마 까지 생성됨)
 3. __Jar파일 빌드__ :  &nbsp; 
-  * 프로젝트 디렉토리에서 gradlew bootjar&nbsp;  
+  * 프로젝트 디렉토리에서 gradlew bootjar&nbsp; 
 ![image](https://user-images.githubusercontent.com/81105748/175779606-51d6a0d7-ce1f-43df-b1bd-c5463b285ddb.png)
-  * 아래와 같은 화면이 나오면 빌드 성공!
+  * 아래와 같은 화면이 나오면 빌드 성공! &nbsp;  
 ![image](https://user-images.githubusercontent.com/81105748/175779665-08f04a67-9d5a-4919-b077-784f6e52b717.png)
 
-4. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
+1. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
   * java -jar 디렉토리/파일명.jar
  <img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
   * 아래와 같은 화면이 나오면 성공!
