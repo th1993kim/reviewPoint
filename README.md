@@ -106,7 +106,7 @@
  &nbsp;
 ### * __POSTMAN 검증 예시__ *
 &nbsp; 
-![image](https://user-images.githubusercontent.com/81105748/174868510-e55052c0-0714-411c-8275-993bb0425fd9.png)
+![image](https://user-images.githubusercontent.com/81105748/175780583-b4ea12b2-7871-43a9-a3e1-856264f464cc.png)
 &nbsp;
 &nbsp;
 &nbsp;  
