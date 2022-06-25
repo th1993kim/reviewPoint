@@ -79,9 +79,18 @@
   <img width="1116" alt="image" src="https://user-images.githubusercontent.com/81105748/175766703-bd08f910-d33d-46b7-ab93-1897c1095e6e.png">
 
 &nbsp;  
+&nbsp;  
+&nbsp;    
 
+### :pencil2: 구현
+---
+* DB 테이블 : event(리뷰이벤트)&nbsp; | &nbsp;PointHistory(포인트기록)  &nbsp; | &nbsp; User(사용자)
+* DB Mapper : JPA , JPQL 이용
+* 데이터 송수신 : JSON Data
+* 에러 : Spring Advice로 에러 처리
 &nbsp;  
 &nbsp;  
+&nbsp;   
 ### :dart: 검증
 ---
 * __Post Man 검증 (외부 유틸리티)__ : 
@@ -102,14 +111,7 @@
 
 * __테스트 코드 검증__ : &nbsp;  
   src/test/java 패키지에서 com.callbus.zaritalk.board 패키지 내의 Controller , Service , Repository Class __우클릭 후 Run As -> Junit5 Test 가동__
-&nbsp;  
-&nbsp;    
 
-### :pencil2: 구현
-* DB 테이블 : event(리뷰이벤트)&nbsp; | &nbsp;PointHistory(포인트기록)  &nbsp; | &nbsp; User(사용자)
-* DB Mapper : JPA , JPQL 이용
-* 데이터 송수신 : JSON Data
-* 에러 : Spring Advice로 에러 처리
 
 &nbsp;  
 &nbsp;  
