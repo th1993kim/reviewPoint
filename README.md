@@ -79,6 +79,7 @@
 3. __Jar파일 빌드__ :  &nbsp; 
   * 프로젝트 디렉토리에서 gradlew bootjar&nbsp;        
 ![image](https://user-images.githubusercontent.com/81105748/175779606-51d6a0d7-ce1f-43df-b1bd-c5463b285ddb.png)
+
   * 아래와 같은 화면이 나오면 빌드 성공! &nbsp;     
 ![image](https://user-images.githubusercontent.com/81105748/175779665-08f04a67-9d5a-4919-b077-784f6e52b717.png)
 
@@ -86,7 +87,7 @@
   * java -jar 디렉토리/파일명.jar &nbsp;  
 <img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
  
-   * 아래와 같은 화면이 나오면 성공! &nbsp;  
+  * 아래와 같은 화면이 나오면 성공! &nbsp;  
 <img width="1116" alt="image" src="https://user-images.githubusercontent.com/81105748/175766703-bd08f910-d33d-46b7-ab93-1897c1095e6e.png">
 
 &nbsp;  
