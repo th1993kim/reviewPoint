@@ -29,9 +29,6 @@
 * __Open JDK 11 설치__
   * 설치 URL : https://jdk.java.net/archive/ 에서 __11.0.2__ 버전 설치
   * 압축 해제 : __C:\Program Files\Java__ 와 같은 경로에 해제 하는걸 권합니다.
-  * username : __dbAdmin__
-  * password : __1234s__
-  *  __*자세한 설정은 프로젝트 내의 application.yml를 변경 하시면 됩니다.__
 
 &nbsp;
 * __STS(Eclipse) 설치__
@@ -63,7 +60,7 @@
 * DB 테이블 : event(리뷰이벤트)&nbsp; | &nbsp;PointHistory(포인트기록)  &nbsp; | &nbsp; User(사용자)
 * DB Mapper : JPA , JPQL 이용
 * 데이터 송수신 : JSON Data
-* 에러 : Spring Advice로 에러 처리
+* 에러 : Json Data {code : 400 , mssage: "잘못된 요청입니다." } 처리
 &nbsp;  
 &nbsp;  
 ### :runner: 실행
@@ -112,10 +109,6 @@
 
 * __테스트 코드 검증__ : &nbsp;  
   src/test/java 패키지에서 com.callbus.zaritalk.board 패키지 내의 Controller , Service , Repository Class __우클릭 후 Run As -> Junit5 Test 가동__
-  
- &nbsp;
-### * __Junit5 검증__ *
-![image](https://user-images.githubusercontent.com/81105748/175768529-19df4d72-9e7d-45f3-80e9-4d2b29b53973.png)
 
 
 &nbsp;  
