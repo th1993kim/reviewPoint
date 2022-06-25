@@ -87,7 +87,8 @@
 4. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
   * java -jar 디렉토리/파일명.jar
  <img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
-  * 아래와 같은 화면이 나오면 성공!
+ 
+   * 아래와 같은 화면이 나오면 성공!
   <img width="1116" alt="image" src="https://user-images.githubusercontent.com/81105748/175766703-bd08f910-d33d-46b7-ab93-1897c1095e6e.png">
 
 &nbsp;  
