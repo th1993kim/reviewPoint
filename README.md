@@ -6,7 +6,7 @@
 ![image](https://user-images.githubusercontent.com/81105748/174888048-895f5580-678f-45c7-9866-0e5ef8debb58.png)
 
 &nbsp;  
-### :computer: 사용 프레임워크 및 라이브러리
+### :computer: __사용 프레임워크 및 라이브러리__
 ---
 * Spring Boot 2.7.0  
 * Lombok AnnotationProcessor  
@@ -16,17 +16,17 @@
 * Mysql-connector-java
 
 &nbsp;
-### :earth_asia: 실행 환경
+### :earth_asia: __실행 환경__
 ---
 * WINDOWS 10
 * OPEN JDK 11
 * MySQL 8.0.27
 
 &nbsp;
-### :cd: 설치
+### :cd: __설치__
 ---
  &nbsp;   
-* Open JDK 11 설치 
+* __Open JDK 11 설치__
   * 설치 URL : https://jdk.java.net/archive/ 에서 __11.0.2__ 버전 설치
   * 압축 해제 : __C:\Program Files\Java__ 와 같은 경로에 해제 하는걸 권합니다.
   * username : __dbAdmin__
@@ -34,11 +34,11 @@
   *  __*자세한 설정은 프로젝트 내의 application.yml를 변경 하시면 됩니다.__
 
 &nbsp;
-* STS(Eclipse) 설치
+* __STS(Eclipse) 설치__
   * 설치 URL: https://spring.io/tools Spring Tools 4 for Eclipse - OS에 맞게 설치 후 압축 해제
   
  &nbsp;   
-* MySql 설치 
+* __MySql 설치__
   * 설치 URL : https://downloads.mysql.com/archives/community  다운로드 후 실행
   * 주의 사항 : __comunity server와 connector j 는 꼭 설치하셔야 합니다.__
   * username : __dbAdmin__
@@ -46,17 +46,26 @@
   *  __*자세한 설정은 프로젝트 내의 application.yml를 변경 하시면 됩니다.__
 
 &nbsp;  
-* Project Lombok 설치
+* __Project Lombok 설치__
   * 설치 URL : https://projectlombok.org/download 다운로드 후 실행
   * 플러그인 설치 : 실행 후 IDE 찾기에서 __프로젝트 Import할 Eclipse.exe 선택__
 
 &nbsp;  
-* Eclipse 구동
+* __Eclipse 구동__
   * GitHub Repository 이용 / 프로젝트 __Import__
   * Import 완료 후 프로젝트 우클릭 -> Gradle -> __Refresh Gradle Project__
   * 프로젝트 우클릭 -> Run As -> __Spring Boot App__
 &nbsp;  
 &nbsp;
+
+### :pencil2: __구현__
+---
+* DB 테이블 : event(리뷰이벤트)&nbsp; | &nbsp;PointHistory(포인트기록)  &nbsp; | &nbsp; User(사용자)
+* DB Mapper : JPA , JPQL 이용
+* 데이터 송수신 : JSON Data
+* 에러 : Spring Advice로 에러 처리
+&nbsp;  
+&nbsp;  
 ### :runner: 실행
 ---
 
@@ -72,7 +81,7 @@
    2. 프로젝트 내의 __sql폴더 Sql 파일__ 실행 혹은 Import (스키마 까지 생성됨)
 
  
-1. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
+3. __Jar파일 실행__ :  &nbsp; CMD 혹은 콘솔창에서 해당 JAR파일 실행
   * java -jar 디렉토리/파일명.jar
  <img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
   * 아래와 같은 화면이 나오면 성공!
@@ -81,17 +90,9 @@
 &nbsp;  
 &nbsp;  
 &nbsp;    
-
-### :pencil2: 구현
----
-* DB 테이블 : event(리뷰이벤트)&nbsp; | &nbsp;PointHistory(포인트기록)  &nbsp; | &nbsp; User(사용자)
-* DB Mapper : JPA , JPQL 이용
-* 데이터 송수신 : JSON Data
-* 에러 : Spring Advice로 에러 처리
-&nbsp;  
-&nbsp;  
 &nbsp;   
-### :dart: 검증
+&nbsp;   
+### :dart: __검증__
 ---
 * __Post Man 검증 (외부 유틸리티)__ : 
   * https://www.postman.com/ 응용 프로그램 혹은 웹 로그인 
@@ -115,7 +116,7 @@
 
 &nbsp;  
 &nbsp;  
-### :memo: API Documentation
+### :memo: __API Documentation__
 ---
 &nbsp;  
 
