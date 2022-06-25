@@ -62,17 +62,26 @@
 1. JDK 환경 설정하기 : 
    *  windows -  https://codingdreamtree.tistory.com/32
    *  linux -    https://veneas.tistory.com/entry/Linux-CentOS7-%EC%9B%90%ED%95%98%EB%8A%94-%ED%8A%B9%EC%A0%95-%EB%B2%84%EC%A0%84-Javajdk-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-wget
-&nbsp;
+  
+&nbsp;  
 2. MySql DB 덤핑 : 
    1. Mysql 사용자 : dbAdmin , 패스워드 : 1234 생성되어있는지 확인
       * 안되어있을경우 CREATE USER 'dbAdmin'@'%' IDENTIFIED  BY '1234';
       * grant all privileges on *.* to 'dbAdmin' with grant option; 
       * FLUSH PRIVILEGES
    2. 프로젝트 내의 __sql폴더 Sql 파일__ 실행 혹은 Import (스키마 까지 생성됨)
-   3. CMD 혹은 콘솔창에서 해당 JAR파일 실행
-      * java -jar 디렉토리/파일명.jar
-      * 아래와 같은 화면이 나오면 성공!
-&nbsp;
+
+&nbsp;  
+3. Jar파일 실행 : CMD 혹은 콘솔창에서 해당 JAR파일 실행
+  * java -jar 디렉토리/파일명.jar
+ <img width="458" alt="image" src="https://user-images.githubusercontent.com/81105748/175766693-d03a35d3-800d-4a70-8bf8-cad75951a3a9.png">
+  * 아래와 같은 화면이 나오면 성공!
+  <img width="1116" alt="image" src="https://user-images.githubusercontent.com/81105748/175766703-bd08f910-d33d-46b7-ab93-1897c1095e6e.png">
+
+&nbsp;  
+
+&nbsp;  
+&nbsp;  
 ### :dart: 검증
 ---
 * __Post Man 검증 (외부 유틸리티)__ : 
