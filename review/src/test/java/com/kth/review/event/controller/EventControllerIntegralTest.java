@@ -53,7 +53,6 @@ public class EventControllerIntegralTest {
 	}
 	
 					
-	
 	@Test
 	void insert() throws Exception {
 		//ready

@@ -1,9 +1,12 @@
 package com.kth.review.event.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kth.review.event.dto.EventRequestDTO;
@@ -22,6 +25,8 @@ public class EventController {
 	private final EventService eventService;
 	private final PointHistoryService pointHistoryService;
 	private final UserService userService;
+	
+	
 	
 	@PostMapping("/events")
 	public ResponseEntity<?> postEvent(@RequestBody EventRequestDTO eventRequestDTO) throws Exception{
@@ -48,7 +53,6 @@ public class EventController {
 		else 					status = "차감"; 
 		
 		// 4. 결과 내용 status:포인트 변동사항   point:변동된 포인트 점수
-		
 		return ResponseEntity.status(httpStatus).body(new EventResponseDTO(status,point));
 	}
 	

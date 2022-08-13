@@ -39,7 +39,7 @@ public class PointHistoryRepositoryUnitTest {
 									.build();
 					
 		//when
-		pointHistoryRepository.save(pointHistory);;
+		pointHistoryRepository.save(pointHistory);
 		
 		//then
 		assertThat(pointHistory.getId()).isNotNull();
